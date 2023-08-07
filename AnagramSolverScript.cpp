@@ -2,28 +2,30 @@
 using std::cin;
 using std::cout;
 using std::endl;
+#include <iomanip>
+using std::setprecision;
 #include <cmath>
+using std::atan;
 using std::pow;
+using namespace std;
+#include <string>
+using std:: string;
 
-int increment(int val, int incr = 1) {
-  val += incr;
-  return val;
+
+
+string Solve(string let){
+  return let + "a";
 }
 
-// calculate ax^2 + bx + c
-double eval_poly(double x, double a = 1.0, double b = 1.0, double c = 1.0) {
-  return a * pow(x, 2) + b * x + c;
-}
 
 int main() {
-  int my_int = 27;
-  cout << increment(my_int, 5) << endl;
-  cout << increment(my_int) << endl;
-  ;
-  // cout << "Val is now:"<<increment();
-
-  // 1*(1^2) + 1*1 + 1
-  cout << eval_poly(1) << endl;
-  // -2*(2^2) + 3*2 + 1
-  cout << eval_poly(2, -2, 3) << endl;
+  string letters;
+  cout << "Give Me The Six Letters: ";
+  cin >> letters;
+  while(letters.length() != 6){
+      cout <<"Invalid Amount Please Type Six Letters: ";
+      cin >> letters;
+  }
+  cout << Solve(letters)<<endl;
+  cout << letters;
 }
