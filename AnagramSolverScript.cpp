@@ -24,6 +24,7 @@ bool isWord(const string &s);
 void find(const string &letters, const string &currStr) {
     if(isWord(currStr)) {
         words.push_back(currStr);
+
     }
     if (currStr.length() == 6 && !isWord(currStr)) {
         return;
@@ -35,6 +36,8 @@ void find(const string &letters, const string &currStr) {
 bool isWord(const string &s) {
     for (const string &w : EnglishWords) {
         if (s == w) {
+            auto it = std :: find(EnglishWords.begin(),EnglishWords.end(),w);
+            EnglishWords.erase(it);
             return true;
         }
     }
@@ -56,12 +59,25 @@ int main() {
       EnglishWords.push_back(line);
   }
   string letters;
+  int letterNums;
   string currStr = "";
-  cout << "Give Me The Six Letters: ";
+  cout <<"Six or Seven letters? Enter Number:";
+  cin>> letterNums;
+  while(letterNums!=6 && letterNums!= 7){
+    cout<<"Not Six or Seven Letters. Try Again:";
+    cin >> letterNums;
+  }
+  cout << "Give Me The Letters: ";
   cin >> letters;
-  while(letters.length() != 6){
+  while(letters.length() != letterNums){
+    if(letterNums==6){
       cout <<"Invalid Amount Please Type Six Letters: ";
       cin >> letters;
+      }
+    if(letterNums==7){
+      cout <<"Invalid Amount Please Type Seven Letters: ";
+      cin >> letters;
+      }
   }
   find(letters, currStr);
   std::sort(words.begin(),words.end(), compareLength);
