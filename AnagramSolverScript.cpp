@@ -18,6 +18,7 @@ using namespace std;
 
 vector<string> EnglishWords;
 vector<string> words;
+int letterNums;
 
 bool isWord(const string &s);
 
@@ -26,7 +27,7 @@ void find(const string &letters, const string &currStr) {
         words.push_back(currStr);
 
     }
-    if (currStr.length() == 6 && !isWord(currStr)) {
+    if (currStr.length() == letterNums && !isWord(currStr)) {
         return;
     }
     for (int i = 0; i < letters.size(); i++) {
@@ -59,7 +60,7 @@ int main() {
       EnglishWords.push_back(line);
   }
   string letters;
-  int letterNums;
+  
   string currStr = "";
   cout <<"Six or Seven letters? Enter Number:";
   cin>> letterNums;
