@@ -15,9 +15,11 @@ using std:: vector;
 using namespace std;
 #include <fstream>
 #include <algorithm>
+#include <unordered_set>
 
 vector<string> EnglishWords;
 vector<string> words;
+unordered_set<string> englishWords;
 int letterNums;
 
 bool isWord(const string &s);
@@ -34,13 +36,11 @@ void find(const string &letters, const string &currStr) {
         find(letters.substr(0, i) + letters.substr(i + 1), currStr + letters[i]);
     }
 }
-bool isWord(const string &s) {
-    for (const string &w : EnglishWords) {
-        if (s == w) {
-            auto it = std :: find(EnglishWords.begin(),EnglishWords.end(),w);
-            EnglishWords.erase(it);
-            return true;
-        }
+
+bool isWord(const string& s){
+    if (englishWords.find(s) != englishWords.end()){
+      englishWords.erase(englishWords.find(s));
+      return true;
     }
     return false;
 }
@@ -58,6 +58,7 @@ int main() {
   string line;
   while (std::getline(inputFile, line)) {
       EnglishWords.push_back(line);
+      englishWords.insert(line);
   }
   string letters;
   
@@ -86,7 +87,7 @@ int main() {
         std::cout << s << std::endl;
     }
 
-  inputFile.close();
+  
 
   return 0;
 }
