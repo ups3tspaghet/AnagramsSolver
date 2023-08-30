@@ -16,6 +16,7 @@ using namespace std;
 #include <fstream>
 #include <algorithm>
 #include <unordered_set>
+#include <map>
 
 vector<string> EnglishWords;
 vector<string> words;
@@ -49,6 +50,7 @@ bool compareLength (const string &a, const string &b){
 }
  
 
+
 int main() {
   std::ifstream inputFile("letters7.txt");
   if (!inputFile.is_open()) {
@@ -60,6 +62,8 @@ int main() {
       EnglishWords.push_back(line);
       englishWords.insert(line);
   }
+  
+  
   string letters;
   
   string currStr = "";
@@ -86,7 +90,7 @@ int main() {
     for (const std::string &s : words) {
         std::cout << s << std::endl;
     }
-
+  
   
 
   return 0;
