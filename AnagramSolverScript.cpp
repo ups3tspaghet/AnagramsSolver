@@ -43,6 +43,7 @@ bool isWord(const string& s){
       englishWords.erase(englishWords.find(s));
       return true;
     }
+    
     return false;
 }
 bool compareLength (const string &a, const string &b){
